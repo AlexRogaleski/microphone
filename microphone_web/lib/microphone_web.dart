@@ -69,8 +69,7 @@ class _Recorder {
   Future<void> init() async {
     assert(_mediaRecorder == null);
 
-    final stream =
-        await window.navigator.getUserMedia(audio: true, video: false);
+    final stream = await window.navigator.getUserMedia(audio: true, video: false);
     _mediaRecorder = MediaRecorder(stream);
 
     _audioBlobParts = [];
@@ -99,7 +98,7 @@ class _Recorder {
     void onStop(_) {
       assert(_audioBlobParts != null);
 
-      final blob = Blob(_audioBlobParts!);
+      final blob = Blob(_audioBlobParts!, "audio/ogg; codecs=opus");
       _audioBlobParts = null;
 
       completer.complete(Url.createObjectUrl(blob));
