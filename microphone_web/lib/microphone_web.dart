@@ -98,7 +98,8 @@ class _Recorder {
     void onStop(_) {
       assert(_audioBlobParts != null);
 
-      final blob = Blob(_audioBlobParts!, "audio/ogg; codecs=opus");
+      // final blob = Blob(_audioBlobParts!, "audio/ogg; codecs=opus");
+      final blob = Blob(_audioBlobParts!, "audio/ogg; codecs=vp9");
       _audioBlobParts = null;
 
       completer.complete(Url.createObjectUrl(blob));
